@@ -1,13 +1,14 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+from .models import Post
+
 
 def index(request):
     template = 'posts/index.html'
-    text = 'Это главная страница проекта Yatube'
+    posts = Post.objects.order_by('-pub_date')[:10]
     context = {
-        'text' : text
+        'posts': posts,
     }
     return render(request, template, context)
 
