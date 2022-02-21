@@ -1,6 +1,4 @@
-from multiprocessing import context
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from .models import Post, Group
 
 
@@ -12,13 +10,6 @@ def index(request):
     }
     return render(request, template, context)
 
-def group_list(request):
-    template = 'base.html'
-    text = 'Здесь будет информация о группах проекта Yatube'
-    context = {
-        'text' : text
-    }
-    return render(request, template, context)
 
 def group_posts(request, slug):
     template = 'posts/group_list.html'
